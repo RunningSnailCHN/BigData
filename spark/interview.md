@@ -6,9 +6,9 @@
 ## 3.spark sql
 ### 3.1 Hive sql 和 SparkSql 区别
 ## 4.其他组件
-4.1 namenode 怎么实现高可用性
-4.2 zookeeper 在spark中哪里可以用到
-4.3 如何处理kafka中的offset
+4.1 namenode 怎么实现高可用性  
+4.2 zookeeper 在spark中哪里可以用到  
+4.3 如何处理kafka中的offset  
 
 ## 5.java/scala
 5.1 scala比java好在哪里
