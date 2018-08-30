@@ -16,7 +16,8 @@
 
 ## 5.java/scala
 5.1 scala比java好在哪里  
-5.2 线程池原理  
+5.2 线程池原理
+5.3 hashMap桶的大小，是否是线程安全的
 
 ## 6.jvm 
 6.1 什么时候发生full GC  
