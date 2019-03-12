@@ -1,6 +1,6 @@
 # 大数据开发工程师面试题
 ## 1.spark core
--  rdd 特点  
+-  rdd 特点 
 -  rdd transform 和action介绍  
 -  rdd 的action有哪些  
 -  什么时候发生shuffle
