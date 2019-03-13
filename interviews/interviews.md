@@ -1,5 +1,36 @@
 #BigData面试题总结
+
+----------
+
 ## JAVA相关
+### 接口与抽象的本质区别
+### 多线程实现的几种方式
+### 用到的线程池有哪些
+### jvm内存分区及gc算法
+### 引用类型（强引用，弱引用），jvm什么时候判断成弱引用
+### 锁的实现
+### 分布式锁
+### mysql 索引
+### 介绍spark
+### 定位性能问题
+### 实时分析流处理
+### hbase使用    
+### scala比java好在哪里  
+### 线程池原理
+### hashMap桶的大小，是否是线程安全的
+### 什么时候发生full GC  
+Minor GC触发条件：当Eden区满时，触发Minor GC。
+Full GC触发条件：
+
+（1）调用System.gc时，系统建议执行Full GC，但是不必然执行
+
+（2）老年代空间不足
+
+（3）方法区空间不足
+
+（4）通过Minor GC后进入老年代的平均大小大于老年代的可用内存
+
+（5）由Eden区、From Space区向To Space区复制时，对象大小大于To Space可用内存，则把该对象转存到老年代，且老年代的可用内存小于该对象大小  
 ###  List与set的区别？
 List特点：元素有放入顺序，元素可重复，Set特点：元素无放入顺序，元素不可重复。
 
@@ -616,6 +647,8 @@ Flume采集日志是通过流的方式直接将日志收集到存储层，而kaf
 3、每个分区下最重要的两个文件是0000000000.log和000000.index符，0000000.log
 以默认1G大小回滚。
 
+### kafka offset代表的意义
+### kafka语义保证
 
 ##Spark相关
 ###1）mr和spark区别，怎么理解spark-rdd
@@ -819,6 +852,228 @@ B.text
 	    }
     }
 
+	
+	
+	
+***spark Core***
+### rdd 特点 
+### rdd transform 和action介绍  
+### rdd 的action有哪些  
+### 什么时候发生shuffle
+### spark通信过程
+### spark on yarn 提交过程
+### broadcast原理
+### checkpoint原理，储存了哪些数据，sc和rdd有啥区别
+### stage划分过程
+### 窄依赖和宽依赖？
+### 性能调优
+### 内存管理
+### shuffle 原理
+### 分区和Task的关系
+
+### 1.Sparkmaster使用zookeeper进行HA的，有哪些元数据保存在Zookeeper？	17
+### 2.SparkmasterHA主从切换过程不会影响集群已有的作业运行，为什么？	18
+### 3.SparkonMesos中，什么是的粗粒度分配，什么是细粒度分配，各自的优点和缺点是什么？	18
+### 4.如何配置sparkmaster的HA？	18
+### 5.ApacheSpark有哪些常见的稳定版本，Spark1.6.0的数字分别代表什么意思？	19
+### 6.driver的功能是什么？	20
+### 7.spark的有几种部署模式，每种模式特点？	20
+### 8.Spark技术栈有哪些组件，每个组件都有什么功能，适合什么应用场景？	22
+### 9.Spark中Work的主要工作是什么？	23
+### 10.Spark为什么比mapreduce快？	23
+### 11.简单说一下hadoop和spark的shuffle相同和差异？	24
+### 12.Mapreduce和Spark的都是并行计算，那么他们有什么相同和区别	25
+### 13.RDD机制？	26
+### 14、spark有哪些组件？	26
+### 15、spark工作机制？	27
+### 16、spark的优化怎么做？	27
+### 17.简要描述Spark分布式集群搭建的步骤	28
+### 18.什么是RDD宽依赖和窄依赖？	28
+### 19.spark-submit的时候如何引入外部jar包	29
+### 20.cache和pesist的区别	29
+### 
+### 1.cache后面能不能接其他算子,它是不是action操作？	30
+### 2.reduceByKey是不是action？	30
+### 3.数据本地性是在哪个环节确定的？	30
+### 4.RDD的弹性表现在哪几点？	31
+### 5.常规的容错方式有哪几种类型？	31
+### 6.RDD通过Linage（记录数据更新）的方式为何很高效？	31
+### 7.RDD有哪些缺陷？	32
+### 8.说一说Spark程序编写的一般步骤？	32
+### 9.Spark有哪两种算子？	32
+### 10.Spark提交你的jar包时所用的命令是什么？	33
+### 11.Spark有哪些聚合类的算子,我们应该尽量避免什么类型的算子？	33
+### 12.你所理解的Spark的shuffle过程？	33
+### 13.你如何从Kafka中获取数据？	33
+### 14.对于Spark中的数据倾斜问题你有什么好的方案？	34
+### 15.RDD创建有哪几种方式？	35
+### 16.Spark并行度怎么设置比较合适	35
+### 17.Spark中数据的位置是被谁管理的？	35
+### 18.Spark的数据本地性有哪几种？	36
+### 19.rdd有几种操作类型？	36
+### 20.Spark如何处理不能被序列化的对象？	36
+### 21.collect功能是什么，其底层是怎么实现的？	37
+### 22.Spaek程序执行，有时候默认为什么会产生很多task，怎么修改默认task执行个数？	37
+### 23.为什么SparkApplication在没有获得足够的资源，job就开始执行了，可能会导致什么什么问题发生?	38
+### 24.map与flatMap的区别	38
+### 25.列举你常用的action？	38
+### 26.Spark为什么要持久化，一般什么场景下要进行persist操作？	39
+### 27.为什么要进行序列化	40
+### 28.介绍一下join操作优化经验？	40
+### 29.介绍一下cogrouprdd实现原理，你在什么场景下用过这个rdd？	40
+### 1.Spark使用parquet文件存储格式能带来哪些好处？	42
+### 2.Executor之间如何共享数据？	43
+### 3.Spark累加器有哪些特点？	43
+### 4.如何在一个不确定的数据规模的范围内进行排序？	44
+### 5.sparkhashParitioner的弊端是什么？	44
+### 6.RangePartitioner分区的原理?	44
+### 7.介绍parition和block有什么关联关系？	45
+### 8.Spark应用程序的执行过程是什么？	45
+### 9.hbase预分区个数和spark过程中的reduce个数相同么	46
+### 10.如何理解Standalone模式下，Spark资源分配是粗粒度的？	46
+### 11.Spark如何自定义partitioner分区器？	46
+### 12.spark中task有几种类型？	47
+### 13.union操作是产生宽依赖还是窄依赖？	47
+### 14.rangePartioner分区器特点？	47
+### 15.什么是二次排序，你是如何用spark实现二次排序的？（互联网公司常面）	48
+### 16.如何使用Spark解决TopN问题？（互联网公司常面）	48
+### 17.如何使用Spark解决分组排序问题？（互联网公司常面）	48
+### 18.窄依赖父RDD的partition和子RDD的parition是不是都是一对一的关系？	50
+### 19.Hadoop中，Mapreduce操作的mapper和reducer阶段相当于spark中的哪几个算子？	50
+### 20.什么是shuffle，以及为什么需要shuffle？	50
+### 21.不需要排序的hashshuffle是否一定比需要排序的sortshuffle速度快？	50
+### 22.Spark中的HashShufle的有哪些不足？	51
+### 23.conslidate是如何优化Hashshuffle时在map端产生的小文件？	51
+### 24.Sort-basesdshuffle产生多少个临时文件	52
+### 25.Sort-basedshuffle的缺陷?	52
+### 26.Sparkshell启动时会启动derby?	52
+### 27.spark.default.parallelism这个参数有什么意义，实际生产中如何设置？	53
+### 28.spark.storage.memoryFraction参数的含义,实际生产中如何调优？	53
+### 29.spark.shuffle.memoryFraction参数的含义，以及优化经验？	54
+### 30.介绍一下你对UnifiedMemoryManagement内存管理模型的理解？	54
+### 1.MRV1有哪些不足？	57
+### 2.描述Yarn执行一个任务的过程？	57
+### 3.Yarn中的container是由谁负责销毁的，在HadoopMapreduce中container可以复用么？	58
+### 4.提交任务时，如何指定SparkApplication的运行模式？	58
+### 5.不启动Spark集群Master和work服务，可不可以运行Spark程序？	59
+### 6.Spark中的4040端口由什么功能?	59
+### 7.sparkonyarnCluster模式下，ApplicationMaster和driver是在同一个进程么？	59
+### 8.如何使用命令查看application运行的日志信息	59
+### 9.SparkonYarn模式有哪些优点？	60
+### 10.谈谈你对container的理解？	60
+### 11.运行在yarn中Application有几种类型的container？	61
+### 12.SparkonYarn架构是怎么样的？（要会画哦，这个图）	61
+### 13.Executor启动时，资源通过哪几个参数指定？	62
+### 14.为什么会产生yarn，解决了什么问题，有什么优势?	62
+### 15.Mapreduce的执行过程?	62
+### 16.一个task的map数量由谁来决定？	62
+### 17.reduce后输出的数据量有多大？	63
+### 18.你的项目提交到job的时候数据量有多大？	63
+### 19.你们提交的job任务大概有多少个？这些job执行完大概用多少时间？	64
+### 20.你们业务数据量多大？有多少行数据？	64
+### 22.如何杀死一个正在运行的job	64
+### 23.列出你所知道的调度器，说明其工作原理	64
+### 24.YarnClient模式下，执行SparkSQL报这个错，Exceptioninthread"Thread-2"java.lang.OutOfMemoryError:PermGenspace，但是在YarnCluster模式下正常运行，可能是什么原因？	65
+### 25.spark.driver.extraJavaOptions这个参数是什么意思，你们生产环境配了多少？	65
+### 26.导致Executor产生FULLgc的原因，可能导致什么问题？	66
+### 27.Combiner和partition的作用	66
+### 28.Spark执行任务时出现java.lang.OutOfMemoryError:GCoverheadlimitexceeded和java.lang.OutOfMemoryError:javaheapspace原因和解决方法？	67
+### 29.请列出在你以前工作中所使用过的开发map/reduce的语言	67
+### 30.你认为/etc/hosts配置错误，会对集群有什么影响？	67
+### 1.scala中private与private[this]修饰符的区别？	69
+### 2.scala中内部类和java中的内部类区别	69
+### 3.Spark中standalone模式特点，有哪些优点和缺点？	69
+### 4.FIFO调度模式的基本原理、优点和缺点？	69
+### 5.FAIR调度模式的优点和缺点？	69
+### 6.CAPCACITY调度模式的优点和缺点？	69
+### 7.列举你了解的序列化方法，并谈谈序列化有什么好处？	69
+### 8.常见的数压缩方式，你们生产集群采用了什么压缩方式，提升了多少效率？	69
+### 9.简要描述Spark写数据的流程？	69
+### 10.Spark中Lineage的基本原理	69
+### 11.使用shell和scala代码实现WordCount？	69
+### 12.请列举你碰到的CPU密集型的应用场景，你有做哪些优化？	69
+### 13.SparkRDD和MR2的区别	69
+### 14.Spark读取hdfs上的文件，然后count有多少行的操作，你可以说说过程吗。那这个count是在内存中，还是磁盘中计算的呢？	70
+### 15.spark和Mapreduce快？为什么快呢？快在哪里呢？	70
+### 16.sparkSql又为什么比hive快呢？	70
+### 17.RDD的数据结构是怎么样的？	70
+### 18.RDD算子里操作一个外部map比如往里面put数据。然后算子外再遍历map。会有什么问题吗。	70
+### 19.hadoop的生态呢。说说你的认识。	70
+### 20.jvm怎么调优的，介绍你的SparkJVM调优经验？	70
+### 21.jvm结构？堆里面几个区？	70
+### 22.怎么用spark做数据清洗	70
+### 23.spark怎么整合hive？	70
+### 24.spark读取数据，是几个Partition呢？	70
+### 25.hbaseregion多大会分区，spark读取hbase数据是如何划分partition的？	70
+### 26.画图，画Spark的工作模式，部署分布架构图	70
+### 27.画图，画图讲解spark工作流程。以及在集群上和各个角色的对应关系。	71
+### 28.java自带有哪几种线程池。	71
+### 29.画图，讲讲shuffle的过程。那你怎么在编程的时候注意避免这些性能问题？	71
+### 30.BlockManager怎么管理硬盘和内存的？	71
+### 1.kafka收集数据的原理？	72
+### 2.讲讲列式存储的parquet文件底层格式？	72
+### 3.dataset和dataframe？	72
+### 4scala中trait特征和用法？	72
+### 5.redis和memcache的区别？	72
+### 6.列举Spark中常见的端口，分别有什么功能？	72
+### 7.Sparkmaster如何通过Zookeeper做HA？	72
+### 8.Spark官网中，你常用哪几个模块？	72
+### 9.你有见过哪些原因导致的数据倾斜，怎么解决？	72
+### 10.简要描述宽依赖窄依赖以及各自的特点？	72
+### 11.yarn的原理？	72
+### 12.BlockManager怎么管理硬盘和内存的？	72
+### 13.哪些算子操作涉及到shuffle1	72
+### 14.看过源码？你熟悉哪几个部分的源码？	72
+### 15.集群上nodemanager和ResourceManager的数量关系？	72
+### 16.Spark如何处理结构化数据，Spark如何处理非结构话数据？	73
+### 17.Spark性能优化主要有哪些手段？	73
+### 18.简要描述Spark分布式集群搭建的步骤？	73
+### 19.对于Spark你觉得他对于现有大数据的现状的优势和劣势在哪里？	73
+### 20.对于算法是否进行过自主的研究设计？	73
+### 21.简要描述你了解的一些数据挖掘算法与内容	73
+### 22.什么时候join不发生shuffle？	73
+### 23.sparkshuffle的具体过程，你知道几种shuffle方式	73
+### 24.spark如何防止内存溢出？	73
+### 25.简述hadoop实现join的及各种方式？	73
+### 26rdd转为dataFrame两种方式？	73
+### 27.列举你熟悉的内存系统，各自的优缺点？	73
+### 28.Spark中Master实现HA有哪些方式？	73
+### 29函数式编程特点？	73
+### 30.Sort-basedshuffle的缺陷？	74
+### 1、简答说一下hadoop的map-reduce编程模型	74
+### 2、hadoop的TextInputFormat作用是什么，如何自定义实现	75
+### 3、hadoop和spark的都是并行计算，那么他们有什么相同和区别	75
+### 4、为什么要用flume导入hdfs，hdfs的构架是怎样的	76
+### 5、map-reduce程序运行的时候会有什么比较常见的问题	76
+### 6、简单说一下hadoop和spark的shuffle过程	77
+### 7、Hive中存放是什么？	77
+### 8、Hive与关系型数据库的关系？	77
+### 9、Flume工作机制是什么？	78
+### 10、Sqoop工作原理是什么？	78
+### 11、Hbase行健列族的概念，物理模型，表的设计原则？	78
+### 12、SparkStreaming和Storm有何区别？	79
+### 13、mllib支持的算法？	79
+### 14、简答说一下hadoop的map-reduce编程模型？	80
+### 15、Hadoop平台集群配置、环境变量设置？	80
+### 16、Hadoop性能调优？	82
+### 17、Hadoop高并发？	83
+### 25、kafka工作原理？	83
+### 26、ALS算法原理？	83
+### 27、kmeans算法原理？	83
+### 28、canopy算法原理？	84
+### 29、朴素贝叶斯分类算法原理？	84
+### 30、关联规则挖掘算法apriori原理？	84
+-----
+***2.spark streaming***
+### 如何处理kafka中的offset
+### 如何保持仅有一次消费语义
+### 峰值数据如何处理
+-----
+
+***3.spark sql***
+### Hive sql 和 SparkSql 区别  
+### spark Sql优化
+### 统计每个季度前n的商品
 ##Sqoop相关
 ###1）sqoop在导入到MySql数据库是怎样保证数据重复，如果重复了该怎么办？？
 在导入时在语句的后面加上一下命令作为节点：
@@ -1075,7 +1330,9 @@ IP的数目还是有限的，最多2^32个，所以可以考虑使用hash将ip�
 2).1000万字符串，其中有些是相同的(重复),需要把重复的全部去掉，保留没有重复的字符串。请问怎么设计和实现?
 
 3).寻找热门查询：查询串的重复度比较高，虽然总数是1千万，但如果除去重复后，不超过3百万个，每个不超过255字节。
+
 ###十、分布式处理mapreduce
+
 适用范围：数据量大，但是数据种类小可以放入内存
 
 基本原理及要点：将数据交给不同的机器去处理，数据划分，结果归约。
@@ -1101,3 +1358,9 @@ IP的数目还是有限的，最多2^32个，所以可以考虑使用hash将ip�
 而外排序的方法会消耗大量的IO，效率不会很高。而上面的分布式方法，也可以用于单机版本，也就是将总的数据根据值的范围，划分成多个不同的子文件，然后逐个处理。处理完毕之后再对这些单词的及其出现频率进行一个归并。实际上就可以利用一个外排序的归并过程。
 另外还可以考虑近似计算，也就是我们可以通过结合自然语言属性，只将那些真正实际中出现最多的那些词作为一个字典，使得这个规模可以放入内存。
 ## 其他
+
+###  看哪些书，关注哪些博客
+###  你有什么要问的吗
+###  遇到最困难的问题，你是怎样解决的
+###  如果让你重新设计这个项目，你会怎么设计？
+###  你怎么看待加班这个问题？
